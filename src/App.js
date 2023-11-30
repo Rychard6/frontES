@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import Login from './telalogin';
+import Cadastro from './telacadastro';
+import Senha from './telaresetsenha';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <Routes>
+
+          <Route path="/senha" element={<Login />} />
+          <Route path="/cadastro" element={<Cadastro />} />
+          <Route path="/recover" element={<Senha />} />
+        </Routes>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
