@@ -57,7 +57,7 @@ export default function Cadastro() {
             <div className="flex justify-center items-center">
               <p className="text-base">
                 Já tem uma conta?{" "}
-                <Link to="/senha" className="text-blue-500 hover:underline">Faça seu login</Link>
+                <Link to="/" className="text-blue-500 hover:underline">Faça seu login</Link>
               </p>
             </div>
           </form>

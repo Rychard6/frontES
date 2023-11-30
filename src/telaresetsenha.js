@@ -32,7 +32,7 @@ export default function Senha() {
               </button>
             </div>
             <div className="flex justify-center items-center">
-              <Link to="/senha" className="text-blue-500 hover:underline">Voltar</Link>
+              <Link to="/" className="text-blue-500 hover:underline">Voltar</Link>
             </div>
 
           </form>
