@@ -1,7 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+
 
 export default function Cadastro() {
+  const [nome, setNome] = useState('');
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
+
+  const handleCadastro = async (e) => {
+    e.preventDefault();
+  
+    try {
+      console.log('Enviando dados para o backend:', { user: { nome, email, senha } });
+  
+      const response = await axios.post('/users', { user: { nome, email, senha } });
+  
+      console.log('Resposta do backend:', response.data);
+    } catch (error) {
+      console.error('Erro no cadastro:', error);
+    }
+  };
+  
   return (
     <div className="flex h-screen bg-gray-200">
       <div className="m-auto w-2/6">
@@ -10,7 +30,7 @@ export default function Cadastro() {
           <div className="flex justify-center">
             <div className="bg-gray-400 rounded-full h-28 w-28 flex justify-center items-center mb-5">LOGO</div>
           </div>
-          <form className="space-y-4 justify-center">
+          <form className="space-y-4 justify-center" onSubmit={handleCadastro}>
             <div className="flex space-x-4 justify-center ">
               <div className="w-3/4">
                 <input
@@ -19,6 +39,8 @@ export default function Cadastro() {
                   id="nome"
                   name="nome"
                   placeholder="Nome"
+                  value={nome}
+                  onChange={(e) => setNome(e.target.value)}
                 />
               </div>
               
@@ -31,6 +53,8 @@ export default function Cadastro() {
                   id="email"
                   name="email"
                   placeholder="E-mail"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
             </div>
@@ -42,6 +66,8 @@ export default function Cadastro() {
                   id="senha"
                   name="senha"
                   placeholder="Senha"
+                  value={senha}
+                  onChange={(e) => setSenha(e.target.value)}
                 />
               </div>
             </div>
